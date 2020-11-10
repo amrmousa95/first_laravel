@@ -10,15 +10,34 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+use App\Http\Controllers\ScrudController;
+
+
+ // Route::get('/', function () {
+ //     return view('welcome');
+ // });
+
+ Auth::routes();
+
+ Route::get('/home', 'HomeController@index')->name('home');
+
+ Auth::routes(['verify'=>true]);
+
+ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+
+ Route::get('/redirect/{service}', 'SocialController@redirect');
+
+ Route::get('/callback/{service}', 'SocialController@callback');
+
+ Route::get('fill','ScrudController@getOffers');
+
+
+ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
+    Route::group(['prefix' => 'offers'], function () {
+        route::get('create', 'ScrudController@create');
+        route::get('all','ScrudController@show');
+    });
+    route::POST('store','ScrudController@store')->name('offers.store');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes(['verify'=>true]);
-
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
