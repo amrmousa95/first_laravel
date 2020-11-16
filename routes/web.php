@@ -38,6 +38,9 @@ use App\Http\Controllers\ScrudController;
     Route::group(['prefix' => 'offers'], function () {
         route::get('create', 'ScrudController@create');
         route::get('all','ScrudController@show');
+
+        route::get('edit/{offer_id}','ScrudController@editOffer');
+        route::post('update/{offer_id}','ScrudController@updateOffer')->name('offers.update');
     });
     route::POST('store','ScrudController@store')->name('offers.store');
 });

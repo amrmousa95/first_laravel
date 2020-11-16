@@ -8,5 +8,8 @@ return [
     'offer price'=>" السعر",
     'offer details_ar'=>" التفاصيــــل  ",
     'offer name'=>'اسم العـــرض',
-    'offer details'=>'تفاصيل العرض'
+    'offer details'=>'تفاصيل العرض',
+    'operations'=>'الإجراءات',
+    'edit'=>'تعديل',
+    'update your offer'=>'عدل العرض براحتك يا باشا ',
 ];

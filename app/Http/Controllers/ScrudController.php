@@ -71,7 +71,7 @@ class ScrudController extends Controller
             'price.required'=>__('messages.offers price required')
         ];
     }
-     // function to show all records of offers table
+     // function to show all records of offers table with two languages
     public function show()
     {
         $offers = Offer::select(
@@ -81,5 +81,21 @@ class ScrudController extends Controller
             'details_' . LaravelLocalization::getCurrentLocale() . ' as details'
         )->get();
         return view('offers.all',compact('offers'));
+    }
+
+    // Edit offer Function
+    public function editOffer($offer_id){
+        $offer = Offer::select('id','price','name_ar','name_en','details_ar','details_en')->find($offer_id);
+        return view('offers.edit',compact('offer'));
+    }
+
+    // update offer
+    public function updateOffer(Request $request,$offer_id){
+        $offer = Offer::find($offer_id);
+        if(!$offer)
+            return redirect()->back();
+        $offer->update($request->all());
+        return redirect()->back()->with(['success'=>'شكراً']);
+
     }
 }

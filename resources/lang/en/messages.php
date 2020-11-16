@@ -8,6 +8,9 @@ return [
     'offer price'=>" offer price",
     'offer details_en'=>" offer details",
     'offer name'=>'Offer Name',
-    'offer details'=>'Offer details'
+    'offer details'=>'Offer details',
+    'operations'=>'Operations',
+    'edit'=>'Edit',
+    'update your offer'=>'Edit Your Offer '
 ];
 
